@@ -9,6 +9,7 @@ public class Person {
     private final String gender;
 
     public Person(String name, int age, String gender) {
+        assert(age>0);
         this.name = name;
         this.age = age;
         this.gender = gender;

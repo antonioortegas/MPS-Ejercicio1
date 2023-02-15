@@ -18,7 +18,7 @@ class PersonTest {
     3.average age of an empty list rises and exception
     4.average age function of 1 person returns the same age
     5.average age function of 2 people returns the average age between them
-    6.
+    6.average age of a 10 people list is correctly calculated
     7.
     8.
     9.
@@ -63,6 +63,37 @@ class PersonTest {
         persons.add(person);
         persons.add(new Person("Silvia", 23, "Female"));
         double[] expected = {21.0,23.0};
+        double[] result = person.averageAgePerGender(persons);
+        assertEquals(expected[0], result[0]);
+        assertEquals(expected[1], result[1]);
+    }
+
+    @Test
+    void shouldAverageAgeOf2PersonReturnTheAverageAge(){
+        persons.add(person);
+        persons.add(new Person("Silvia", 23, "Female"));
+        persons.add(new Person("Beatriz", 25, "Female"));
+        persons.add(new Person("Carlos", 23, "Male"));
+        double[] expected = {22.0,24.0};
+        double[] result = person.averageAgePerGender(persons);
+        assertEquals(expected[0], result[0]);
+        assertEquals(expected[1], result[1]);
+    }
+
+    @Test
+    void shouldAverageAgeOf10PeopleReturnTheCorrectAverageAgeForEachGender(){
+        persons.add(new Person("Ana", 23, "Female"));
+        persons.add(new Person("Beatriz", 24, "Female"));
+        persons.add(new Person("Carla", 25, "Female"));
+        persons.add(new Person("Diana", 26, "Female"));
+        persons.add(new Person("Elena", 27, "Female"));
+
+        persons.add(person);
+        persons.add(new Person("Bertin", 22, "Male"));
+        persons.add(new Person("Carlos", 23, "Male"));
+        persons.add(new Person("David", 24, "Male"));
+        persons.add(new Person("Esteban", 25, "Male"));
+        double[] expected = {23.0,25.0};
         double[] result = person.averageAgePerGender(persons);
         assertEquals(expected[0], result[0]);
         assertEquals(expected[1], result[1]);
