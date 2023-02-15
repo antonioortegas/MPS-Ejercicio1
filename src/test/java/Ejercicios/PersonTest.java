@@ -15,9 +15,9 @@ class PersonTest {
     IMPLEMENTED TESTS
     1.getters all return the correct value
     2.class constructor is correctly implemented
-    3.
-    4.
-    5.
+    3.average age of an empty list rises and exception
+    4.average age function of 1 person returns the same age
+    5.average age function of 2 people returns the average age between them
     6.
     7.
     8.
@@ -56,5 +56,15 @@ class PersonTest {
     @Test
     void shouldAverageAgeReturn0IfListIsEmpty(){
         assertThrows(EmptyListException.class, () -> person.averageAgePerGender(persons));
+    }
+
+    @Test
+    void shouldAverageAgeOf1PersonReturnTheSameAge(){
+        persons.add(person);
+        persons.add(new Person("Silvia", 23, "Female"));
+        double[] expected = {21.0,23.0};
+        double[] result = person.averageAgePerGender(persons);
+        assertEquals(expected[0], result[0]);
+        assertEquals(expected[1], result[1]);
     }
 }

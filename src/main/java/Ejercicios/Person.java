@@ -28,10 +28,23 @@ public class Person {
 
     public double[] averageAgePerGender(List<Person> persons){
         double[] ages = {0,0};
+        int numberOfMales = 0;
+        int numberOfFemales = 0;
         if(persons.isEmpty()){
             throw new EmptyListException("List is empty");
         }
-
+        for (int i = 0 ; i < persons.size() ; i++){
+            if(persons.get(i).getGender().equals("Male")){
+                ages[0]=ages[0] + persons.get(i).getAge();
+                numberOfMales++;
+            }
+            if(persons.get(i).getGender().equals("Female")){
+                ages[1]=ages[1] + persons.get(i).getAge();
+                numberOfFemales++;
+            }
+        }
+        ages[0] = ages[0] / numberOfMales;
+        ages[1] = ages[1] / numberOfFemales;
         return ages;
     }
 }
