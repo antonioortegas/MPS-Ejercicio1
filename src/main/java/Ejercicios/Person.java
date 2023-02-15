@@ -1,5 +1,8 @@
 package Ejercicios;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Person {
     private final String name;
     private final int age;
@@ -21,5 +24,14 @@ public class Person {
 
     public String getGender() {
         return gender;
+    }
+
+    public double[] averageAgePerGender(List<Person> persons){
+        double[] ages = {0,0};
+        if(persons.isEmpty()){
+            throw new EmptyListException("List is empty");
+        }
+
+        return ages;
     }
 }

@@ -4,6 +4,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class PersonTest {
@@ -22,9 +26,12 @@ class PersonTest {
      */
 
     Person person;
+    List<Person> persons;
     @BeforeEach
     void setUp() {
         person = new Person("Antonio", 21, "Male");
+        persons = new ArrayList<Person>();
+        double[] ages = {0,0};
     }
 
     @AfterEach
@@ -46,5 +53,8 @@ class PersonTest {
         assertEquals(person.getGender(), "Male");
     }
 
-
+    @Test
+    void shouldAverageAgeReturn0IfListIsEmpty(){
+        assertThrows(EmptyListException.class, () -> person.averageAgePerGender(persons));
+    }
 }
